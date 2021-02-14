@@ -13,9 +13,30 @@ var score=0;
 var ifnewnum=[];
 var score_replay=[];
 
+function keydown(the_key)//按键检测
+{
+    if(the_key.keyCode == 38||the_key.keyCode == 87)//上键或w键
+    {
+        movup();
+    }
+    else if(the_key.keyCode == 40||the_key.keyCode == 83)
+    {
+        movdown();
+    }
+    else if(the_key.keyCode == 37||the_key.keyCode == 65)
+    {
+        movleft();
+    }
+    else if(the_key.keyCode == 39||the_key.keyCode == 68)
+    {
+        movright();
+    }
+    document.addEventListener("keydown",keydown);
+}
+
 function save_replay()
 {
-    map_replay[step]=[[],[],[],[]];
+    map_replay[step]=[[],[],[],[]];//初始化表格
     for(var x=0;x<4;x++)
     {
         for(var y=0;y<4;y++)
@@ -127,7 +148,7 @@ function movup()
         }
     }
     if(!ifend)
-        addblock(Math.floor(Math.random()*2)+1);
+        addblock(Math.floor(Math.random()*1.5)+1);//添加1-2个数字各
     checkifend();
     output_html();
 }
@@ -171,7 +192,7 @@ function movdown()
         }
     }
     if(!ifend)
-        addblock(Math.floor(Math.random()*2)+1);
+        addblock(Math.floor(Math.random()*1.5)+1);
     checkifend();
     output_html();
 }
@@ -215,7 +236,7 @@ function movleft()
         }
     }
     if(!ifend)
-        addblock(Math.floor(Math.random()*2)+1);
+        addblock(Math.floor(Math.random()*1.5)+1);
     checkifend();
     output_html();
 }
@@ -259,7 +280,7 @@ function movright()
         }
     }
     if(!ifend)
-        addblock(Math.floor(Math.random()*2)+1);
+        addblock(Math.floor(Math.random()*1.5)+1);
     checkifend();
     output_html();
 }
