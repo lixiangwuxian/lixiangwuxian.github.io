@@ -7,10 +7,23 @@
 
 var ifend=false;
 var map=[];
-var mapreplay=[];
+var map_replay=[];
 var step=0;
 var score=0;
 var ifnewnum=[];
+var score_replay=[];
+
+function save_replay()
+{
+    map_replay[step]=[[],[],[],[]];
+    for(var x=0;x<4;x++)
+    {
+        for(var y=0;y<4;y++)
+        {
+            map_replay[step][x][y]=map[x][y];
+        }
+    }
+}
 
 function addblock(n)//随机生成n个2或4
 {
@@ -18,7 +31,7 @@ function addblock(n)//随机生成n个2或4
     {
 		var ifadded = insert_one();
 		if (!ifadded)
-			break;//满了退出
+			break;//满了不加
 		n--;
 	}
 }
@@ -60,7 +73,7 @@ function init()//初始化4x4地图
 {
     step=0;
     score=0;
-    mapreplay=[];
+    map_replay=[];
     ifend=false;
     for (var i=0;i<4;i++)
     {
@@ -71,7 +84,7 @@ function init()//初始化4x4地图
         }
         map[i]=mapy;
     }
-    addblock(Math.floor(Math.random()*1.7)+1);
+    addblock(2);
     output_html();
 }
 
@@ -134,7 +147,7 @@ function movdown()
                     if(map[x][y+k]==map[x][y]&&ifnewnum[x][y+k]==false)
                     {
                         map[x][y+k]++;
-                        ifnewnum[x][y+k]==true;
+                        ifnewnum[x][y+k]=true;
                         score+=map[x][y];
                         map[x][y]=0;
                         break;
@@ -178,7 +191,7 @@ function movleft()
                     if(map[x-k][y]==map[x][y]&&ifnewnum[x-k][y]==false)//能合并
                     {
                         map[x-k][y]++;
-                        ifnewnum[x-k][y]==true;
+                        ifnewnum[x-k][y]=true;
                         score+=map[x][y];//加分
                         map[x][y]=0;
                         break;
@@ -222,7 +235,7 @@ function movright()
                     if(map[x+k][y]==map[x][y]&&ifnewnum[x+k][y]==false)
                     {
                         map[x+k][y]++;
-                        ifnewnum[x+k][y]==true;
+                        ifnewnum[x+k][y]=true;
                         score+=map[x][y];
                         map[x][y]=0;
                         break;
@@ -312,7 +325,8 @@ function checkifend()
 function output_html()
 {
     
-    mapreplay[step]=map;//存入回放
+    save_replay();
+    score_replay[step]=score;
     for(var x=0;x<4;x++)
     {
         for(var y=0;y<4;y++)
@@ -324,17 +338,19 @@ function output_html()
     {
         window.alert("游戏结束，您的分数:"+score);
     }
+    score2update=document.getElementById("score");
+    score2update.innerHTML=score;
 }
 
 function update_pos(x,y,value)
 {
     var map2word=[['p00','p01','p02','p03'],['p10','p11','p12','p13'],['p20','p21','p22','p23'],['p30','p31','p32','p33']];
     var value2word=['/pic/0.jpg','/pic/2.jpg','/pic/4.jpg','/pic/8.jpg','/pic/16.jpg','/pic/32.jpg','/pic/64.jpg','/pic/128.jpg','/pic/256.jpg','/pic/512.jpg','/pic/1024.jpg','/pic/2048.jpg'];
-    img2replace=document.getElementById(map2word[y][x]);
-    img2replace.src=value2word[value];
+    img2update=document.getElementById(map2word[y][x]);
+    img2update.src=value2word[value];
 }
 
-function map_replay()
+function map_replay_f()
 {
     var i=0;
     var replaying=window.setInterval(function replay_fc()
@@ -345,17 +361,20 @@ function map_replay()
             {
                 for(var y=0;y<4;y++)
                 {
-                    update_pos(x,y,mapreplay[i][x][y]);
+                    update_pos(x,y,map_replay[i][x][y]);
                 }
             }
+        score2update=document.getElementById("score");
+        score2update.innerHTML=score_replay[i];
         }
         catch(e)
         {
+            window.alert("回放完毕");
             window.clearInterval(replaying);
         }
         i++;
     }
-    ,500);
+    ,500);;
 }
 
 function clearnum()
