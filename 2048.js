@@ -1,9 +1,3 @@
-///x->0 1 2 3
-///y0
-///|1
-///|2
-///v3
-///map[x][y]
 
 var ifend=false;
 var map=[];
