@@ -39,13 +39,13 @@
             <table class="tbResult">
                 <tr>
                     <input type="button" value="重新开始" onclick="init()"/>
-                    <input type="button" value="观看回放" onclick="map_replay()"/>
+                    <input type="button" value="观看回放" onclick="map_replay_f()"/>
                     <input type="button" value="向上" onclick="movup()"/>
                     <input type="button" value="向下" onclick="movdown()"/>
                     <input type="button" value="向左" onclick="movleft()"/>
                     <input type="button" value="向右" onclick="movright()"/>
                 </tr>
-                <tr><td>当前得分: </td><td id='tdScore' >0</td></tr>
+                <tr><td>当前得分: </td><td id='score'>0</td></tr>
                 <tr><td colspan="2" id='tdFinished' style="display:none;color:red"></td></tr>
             </table>
         </div>
