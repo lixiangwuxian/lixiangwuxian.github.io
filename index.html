@@ -4,46 +4,46 @@
     <head>
         <meta charset="utf-8"/>
         <script src="/2048.js" type="text/javascript"></script>
+        <script>
+            document.addEventListener("keydown",keydown);
+        </script>
     </head>
     <body onload="init()">
-        <h1>2048 小 游 戏</h1>
-        <br/>
-        <p1>
-            <img id="p00" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p01" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p02" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p03" src="/pic/0.jpg" width="50" height="50" />
-        </p1>
-        <br/>
-        <p2>
-            <img id="p10" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p11" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p12" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p13" src="/pic/0.jpg" width="50" height="50" />
-        </p2>
-        <br/>
-        <p3>
-            <img id="p20" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p21" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p22" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p23" src="/pic/0.jpg" width="50" height="50" />
-        </p3>
-        <br/>
-        <p4>
-            <img id="p30" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p31" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p32" src="/pic/0.jpg" width="50" height="50" />
-            <img id="p33" src="/pic/0.jpg" width="50" height="50" />
-        </p4>
+        <div id="mainarea">    <h1>2048 小 游 戏</h1>
+            <br/>
+            <p1>
+                <img id="p00" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p01" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p02" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p03" src="/pic/0.jpg" width="50" height="50" />
+            </p1>
+            <br/>
+            <p2>
+                <img id="p10" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p11" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p12" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p13" src="/pic/0.jpg" width="50" height="50" />
+            </p2>
+            <br/>
+            <p3>
+                <img id="p20" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p21" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p22" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p23" src="/pic/0.jpg" width="50" height="50" />
+            </p3>
+            <br/>
+            <p4>
+                <img id="p30" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p31" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p32" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p33" src="/pic/0.jpg" width="50" height="50" />
+            </p4>
+        </div>
         <div style="float:top">
             <table class="tbResult">
                 <tr>
                     <input type="button" value="重新开始" onclick="init()"/>
                     <input type="button" value="观看回放" onclick="map_replay_f()"/>
-                    <input type="button" value="向上" onclick="movup()"/>
-                    <input type="button" value="向下" onclick="movdown()"/>
-                    <input type="button" value="向左" onclick="movleft()"/>
-                    <input type="button" value="向右" onclick="movright()"/>
                 </tr>
                 <tr><td>当前得分: </td><td id='score'>0</td></tr>
                 <tr><td colspan="2" id='tdFinished' style="display:none;color:red"></td></tr>
