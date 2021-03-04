@@ -1,53 +1,58 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href="index.css" rel="stylesheet" type="text/css"/>
         <script src="/2048.js" type="text/javascript"></script>
         <script>
             document.addEventListener("keydown",keydown);
         </script>
     </head>
     <body onload="init()">
-        <div id="mainarea">    <h1>2048 小 游 戏</h1>
+        <div class="mainarea">
+            <h1>2048 小 游 戏</h1>
             <br/>
             <p1>
-                <img id="p00" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p01" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p02" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p03" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p00" src="/pic/0.jpg"/>
+                <img id="p01" src="/pic/0.jpg"/>
+                <img id="p02" src="/pic/0.jpg"/>
+                <img id="p03" src="/pic/0.jpg"/>
             </p1>
             <br/>
             <p2>
-                <img id="p10" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p11" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p12" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p13" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p10" src="/pic/0.jpg"/>
+                <img id="p11" src="/pic/0.jpg"/>
+                <img id="p12" src="/pic/0.jpg"/>
+                <img id="p13" src="/pic/0.jpg"/>
             </p2>
             <br/>
             <p3>
-                <img id="p20" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p21" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p22" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p23" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p20" src="/pic/0.jpg"/>
+                <img id="p21" src="/pic/0.jpg"/>
+                <img id="p22" src="/pic/0.jpg"/>
+                <img id="p23" src="/pic/0.jpg"/>
             </p3>
             <br/>
             <p4>
-                <img id="p30" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p31" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p32" src="/pic/0.jpg" width="50" height="50" />
-                <img id="p33" src="/pic/0.jpg" width="50" height="50" />
+                <img id="p30" src="/pic/0.jpg"/>
+                <img id="p31" src="/pic/0.jpg"/>
+                <img id="p32" src="/pic/0.jpg"/>
+                <img id="p33" src="/pic/0.jpg"/>
             </p4>
         </div>
-        <div style="float:top">
-            <table class="tbResult">
+        <div class="button">
+            <table>
                 <tr>
                     <input type="button" value="重新开始" onclick="init()"/>
                     <input type="button" value="观看回放" onclick="map_replay_f()"/>
+                    <input type="button" value="撤回一步" onclick="undo()"/>
                 </tr>
-                <tr><td>当前得分: </td><td id='score'>0</td></tr>
-                <tr><td colspan="2" id='tdFinished' style="display:none;color:red"></td></tr>
             </table>
+        </div>
+        <div class="scoreboard">
+            <tr><p5>当前得分: </p5><p6 id="score"></p6></tr>
+            <br/>
+            <tr><p7>一共走了: </p7><p8 id="step"></p8></tr>
         </div>
     </body>
 </html>
